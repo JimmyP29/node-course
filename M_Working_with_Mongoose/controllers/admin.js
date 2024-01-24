@@ -82,7 +82,7 @@ exports.getProducts = (req, res, next) => {
     // .select('title price -_id') // Selecting which fields we want back and explicitly DON'T want back (-)
     // .populate('userId', 'name') // This can also point to nested paths - retrieves the entire user object
     .then(products => {
-      console.log(products);
+      // console.log(products);
       res.render('admin/products', {
         prods: products,
         pageTitle: 'Admin Products',
