@@ -13,23 +13,23 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
+
   const product = new Product({
     title: title,
     price: price,
-    description: description,
     imageUrl: imageUrl,
-    userId: req.user
+    description: description,
+    userId: req.user // Mongoose is able to assign the user._id by just assigning the whole user object.
   });
+
   product
     .save()
     .then(result => {
-      // console.log(result);
+      //console.log(result)
       console.log('Created Product');
-      res.redirect('/admin/products');
+      return res.redirect('/admin/products');
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -39,6 +39,7 @@ exports.getEditProduct = (req, res, next) => {
   }
   const prodId = req.params.productId;
   Product.findById(prodId)
+    //Product.findByPk(prodId)
     .then(product => {
       if (!product) {
         return res.redirect('/');
@@ -64,23 +65,24 @@ exports.postEditProduct = (req, res, next) => {
     .then(product => {
       product.title = updatedTitle;
       product.price = updatedPrice;
-      product.description = updatedDesc;
       product.imageUrl = updatedImageUrl;
+      product.description = updatedDesc;
+
       return product.save();
-    })
-    .then(result => {
-      console.log('UPDATED PRODUCT!');
+    }).then(() => {
+      console.log('Updated Product');
       res.redirect('/admin/products');
     })
     .catch(err => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.find()
-    // .select('title price -_id')
-    // .populate('userId', 'name')
+  Product
+    .find()
+    // .select('title price -_id') // Selecting which fields we want back and explicitly DON'T want back (-)
+    // .populate('userId', 'name') // This can also point to nested paths - retrieves the entire user object
     .then(products => {
-      console.log(products);
+      // console.log(products);
       res.render('admin/products', {
         prods: products,
         pageTitle: 'Admin Products',
@@ -92,9 +94,10 @@ exports.getProducts = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findByIdAndRemove(prodId)
+
+  Product.findByIdAndDelete(prodId)
     .then(() => {
-      console.log('DESTROYED PRODUCT');
+      console.log('Destroyed Product');
       res.redirect('/admin/products');
     })
     .catch(err => console.log(err));
