@@ -19,6 +19,7 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     imageUrl: imageUrl,
     description: description,
+    userId: req.user // Mongoose is able to assign the user._id by just assigning the whole user object.
   });
 
   product
