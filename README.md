@@ -9,3 +9,9 @@ https://www.mongodb.com/
 
 ## Mongoose
 https://mongoosejs.com/docs/
+
+## expressjs/session
+https://github.com/expressjs/session
+
+## connect-mongodb-session
+https://www.npmjs.com/package/connect-mongodb-session
