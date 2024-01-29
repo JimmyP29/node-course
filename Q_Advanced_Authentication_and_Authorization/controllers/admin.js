@@ -63,22 +63,26 @@ exports.postEditProduct = (req, res, next) => {
 
   Product.findById(prodId)
     .then(product => {
+      if (product.userId.toString() !== req.user._id.toString()) {
+        return res.redirect('/');
+      }
       product.title = updatedTitle;
       product.price = updatedPrice;
       product.imageUrl = updatedImageUrl;
       product.description = updatedDesc;
 
-      return product.save();
-    }).then(() => {
-      console.log('Updated Product');
-      res.redirect('/admin/products');
+      return product.save()
+        .then(() => {
+          console.log('Updated Product');
+          res.redirect('/admin/products');
+        });
     })
     .catch(err => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
   Product
-    .find()
+    .find({ userId: req.user._id })
     // .select('title price -_id') // Selecting which fields we want back and explicitly DON'T want back (-)
     // .populate('userId', 'name') // This can also point to nested paths - retrieves the entire user object
     .then(products => {
@@ -95,7 +99,7 @@ exports.getProducts = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
 
-  Product.findByIdAndDelete(prodId)
+  Product.deleteOne({ _id: prodId, userId: req.user._id })
     .then(() => {
       console.log('Destroyed Product');
       res.redirect('/admin/products');
