@@ -94,13 +94,13 @@ exports.postSignup = (req, res, next) => {
                     return user.save();
                 })
                 .then(result => {
-                    res.redirect('/login');
-                    return transporter.sendMail({
-                        to: email,
-                        from: 'shop@node-complete.com',
-                        subject: 'Sign-up Succeeded',
-                        html: '<h1>You successfully signed up!!!</h1>'
-                    });
+                    return res.redirect('/login');
+                    // return transporter.sendMail({
+                    //     to: email,
+                    //     from: 'shop@node-complete.com',
+                    //     subject: 'Sign-up Succeeded',
+                    //     html: '<h1>You successfully signed up!!!</h1>'
+                    // });
                 })
                 .catch(err => console.log(err));
         })

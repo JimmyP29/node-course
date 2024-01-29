@@ -30,3 +30,6 @@ https://www.npmjs.com/package/csrf-csrf
 
 ## Sendgrid
 https://sendgrid.com/en-us 
+
+## Nodemailer
+https://nodemailer.com/about/
