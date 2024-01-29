@@ -15,3 +15,9 @@ https://github.com/expressjs/session
 
 ## connect-mongodb-session
 https://www.npmjs.com/package/connect-mongodb-session
+
+## CSRF Alternatives
+https://www.npmjs.com/search?q=express%20csrf
+
+
+https://www.npmjs.com/package/csrf-csrf
