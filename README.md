@@ -16,6 +16,12 @@ https://github.com/expressjs/session
 ## connect-mongodb-session
 https://www.npmjs.com/package/connect-mongodb-session
 
+## bcrypt official docs
+https://github.com/dcodeIO/bcrypt.js
+
+## CSRF Attacks
+https://www.acunetix.com/websitesecurity/csrf-attacks/
+
 ## CSRF Alternatives
 https://www.npmjs.com/search?q=express%20csrf
 
