@@ -33,3 +33,6 @@ https://sendgrid.com/en-us
 
 ## Nodemailer
 https://nodemailer.com/about/
+
+## express-validator
+https://express-validator.github.io/docs 
