@@ -38,6 +38,11 @@ exports.getSignup = (req, res, next) => {
         path: '/signup',
         pageTitle: 'Sign-up',
         errorMessage: message,
+        oldInput: {
+            email: '',
+            password: '',
+            confirmPassword: ''
+        },
     });
 }
 
@@ -47,11 +52,13 @@ exports.postLogin = (req, res, next) => {
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        res.render('auth/login', {
-            path: '/login',
-            pageTitle: 'Login',
-            errorMessage: errors.array()[0].msg,
-        });
+        return res
+            .status(422)
+            .render('auth/login', {
+                path: '/login',
+                pageTitle: 'Login',
+                errorMessage: errors.array()[0].msg,
+            });
     }
 
     User.findOne({ email: email })
@@ -95,6 +102,11 @@ exports.postSignup = (req, res, next) => {
                 path: '/signup',
                 pageTitle: 'Sign-up',
                 errorMessage: errors.array()[0].msg,
+                oldInput: {
+                    email: email,
+                    password: password,
+                    confirmPassword: req.body.confirmPassword
+                }
             });
     }
 
