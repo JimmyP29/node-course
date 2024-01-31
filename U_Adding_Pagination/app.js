@@ -103,6 +103,7 @@ app.use((error, req, res, next) => {
     console.log('using middleware');
     // res.redirect('/500');
     res.status(500).render('500', { pageTitle: 'Error', path: '/500', isAuthenticated: req.session.isLoggedIn });
+    console.log(error)
 });
 
 mongoose
