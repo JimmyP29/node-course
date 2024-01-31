@@ -37,5 +37,11 @@ https://nodemailer.com/about/
 ## express-validator
 https://express-validator.github.io/docs 
 
+## Multer official docs
+https://github.com/expressjs/multer
+
+## Streaming files
+https://www.freecodecamp.org/news/node-js-streams-everything-you-need-to-know-c9141306be93
+
 ## PDFKit
 https://pdfkit.org/ 
