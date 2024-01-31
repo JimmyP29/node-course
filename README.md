@@ -36,3 +36,6 @@ https://nodemailer.com/about/
 
 ## express-validator
 https://express-validator.github.io/docs 
+
+## PDFKit
+https://pdfkit.org/ 
