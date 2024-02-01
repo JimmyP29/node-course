@@ -56,3 +56,6 @@ Here's how you would implement pagination in SQL code: https://stackoverflow.com
 To quickly sum it up: The LIMIT command allows you to restrict the amount of data points you fetch, it's your limit() equivalent. Combined with the OFFSET command (which replaces skip()), you can control how many items you want to fetch and how many you want to skip.
 
 When using Sequelize, the official docs describe how to add pagination: https://sequelize.org/master/manual/model-querying-basics.html
+
+## More on fetch API
+https://developers.google.com/web/updates/2015/03/introduction-to-fetch
