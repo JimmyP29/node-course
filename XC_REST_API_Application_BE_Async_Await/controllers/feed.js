@@ -30,6 +30,7 @@ exports.getPosts = (req, res, next) => {
 
             next(err);
         });
+    // ... This would execute right after Post.find()
 }
 
 exports.createPost = (req, res, next) => {
